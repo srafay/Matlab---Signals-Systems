@@ -1,0 +1,13 @@
+T=pi;
+t0=-0.5;
+wo=2*pi/T;
+n=0:7;
+fun = @(t) 2*t*exp(-1i*n*wo*t);
+Cn = 1/T*integral(fun,t0,0.5,'ArrayValued',true);
+fun = @(t) 2*(1-t)*exp(-1i*n*wo*t);
+Cn=Cn+1/T*integral(fun,0.5,1.5,'ArrayValued',true);
+k=[ Cn(1) 2*Cn(2:end)];
+m=abs(k);
+ph=angle(k);
+subplot(211); plot(n,m, 'o');grid;title('Magnitude','FontSize',16);
+subplot(212); plot(n,ph,'o');grid;title('Phase','FontSize',16);

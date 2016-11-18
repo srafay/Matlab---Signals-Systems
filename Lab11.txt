@@ -1,0 +1,41 @@
+Q2
+SET SERVEROUTPUT ON
+
+VARIABLE
+	g_total NUMBER
+ACCEPT
+	p_sal PROMPT		'Please enter the salary amount: '
+	p_percentage PROMPT	'Please enter the bonus percentage: '	 
+
+DECLARE
+	v_sal_ann NUMBER(7):=&p_sal;
+	v_bonus_per NUMBER(3):=&p_percentage;
+BEGIN
+	g_total:=NVL(v_sal_ann,0)+(NVL(v_sal_ann,0)*(v_bonus_per/100));
+END;
+
+/
+PRINT g_total
+
+
+Q3
+SET SERVEROUTPUT ON
+DECLARE
+	v_num_emp NUMBER(4);
+	v_max_sal EMP.SAL%TYPE;
+	v_avg_sal EMP.SAL%TYPE;
+BEGIN
+	SELECT COUNT(*) INTO v_num_emp
+	from EMP 
+	where DEPTNO=10;
+	SELECT MAX(SAL)	INTO v_max_sal
+	from EMP 
+	where DEPTNO=20;
+	SELECT AVG(SAL)	INTO v_avg_sal
+	from EMP;
+	dbms_output.put_line('Number of employees in dept 10 = ' || v_num_emp);
+	dbms_output.put_line('MAx sal in dept 20 = ' || v_max_sal);
+	dbms_output.put_line('avg salary = ' || v_avg_sal);
+END;
+/
+

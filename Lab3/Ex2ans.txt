@@ -1,0 +1,4 @@
+The signal with sampling rate 100 samples per second is recovered while the signals with
+sampling rates with 20 samples per second and 10 samples per second are not properly reconstructed.
+This is due due the reason that in the first case sampling rate=100 is greater than Nyquist Rate which is
+equal to 2*Fmaxfrequency=2*10=20 and in the second case it is equal , and in the third it is less than 20

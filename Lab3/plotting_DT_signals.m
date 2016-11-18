@@ -1,0 +1,14 @@
+t= 0:0.01:5;
+y1=cos(2*pi*t);
+y2=downsample(y1,3);
+n2=downsample(t,3);
+y3 = spline(n2,y2,t);
+y4=cos(14*pi*t);
+y5=downsample(y1,3);
+y6 = spline(n2,y2,t);
+subplot(2,3,1); plot(t,y1);title('Signal','FontSize',15);
+subplot(2,3,2); plot(n2,y2,'o');title('Sampled','FontSize',15);
+subplot(2,3,3); plot(n2,y2);title('Reconstructed','FontSize',15);
+subplot(2,3,4); plot(t,y4);title('Signal','FontSize',15);
+subplot(2,3,5); plot(n2,y5,'o');title('Sampled','FontSize',15);
+subplot(2,3,6); plot(t,y6);title('Reconstructed','FontSize',15);

@@ -1,0 +1,11 @@
+t= -5:5;
+y1= (t>=0);
+y2= t.* y1;
+t1=1:9;
+y3= 2*(0.25).^t1;
+subplot(3,1,1), stem(t, y1);
+title('Unit Step');
+subplot(3,1,2), stem(t, y2);
+title('Unit Ramp');
+subplot(3,1,3), stem(t1, y3);
+title('Real Exponential');

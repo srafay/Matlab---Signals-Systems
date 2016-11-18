@@ -1,0 +1,50 @@
+Q1
+SET SERVEROUTPUT ON
+ACCEPT
+	p_emp_num PROMPT 'Enter employee number: '
+DECLARE
+	v_emp_num emp.empno%TYPE;
+	v_emp_sal emp.sal%TYPE;
+	v_emp_bonus emp.sal%TYPE;
+BEGIN
+	v_emp_num := &p_emp_num;
+	SELECT sal INTO v_emp_sal
+	from emp
+	where empno = v_emp_num;
+	if v_emp_sal<1000 then
+    		v_emp_bonus:=(v_emp_sal*(10/100));
+	elsif v_emp_sal between 1000 and 1500 then
+		v_emp_bonus:=(v_emp_sal*(15/100));
+	elsif v_emp_sal>1500 then
+		v_emp_bonus:=v_emp_sal*(20/100);
+	elsif v_emp_sal=NULL then
+		v_emp_bonus:=0;
+	end if;
+	dbms_output.put_line(' Bonus Amount = ' || v_emp_bonus);
+END;
+/
+
+Q2
+SET SERVEROUTPUT ON
+ACCEPT
+	p_emp_num PROMPT 'Enter employee number: '
+DECLARE
+	v_emp_num emp.empno%TYPE;
+	v_emp_sal emp.sal%TYPE;
+	v_star VARCHAR2(500);
+BEGIN
+	v_emp_num := &p_emp_num; 
+	SELECT sal INTO v_emp_sal
+	from emp
+	where empno = v_emp_num;
+	LOOP
+		v_emp_sal:=v_emp_sal-100;
+		EXIT WHEN v_emp_sal<100;
+		v_star:=v_star || '*' ;
+	END LOOP;
+	dbms_output.put_line(' Stars = ' || v_star);
+END;
+/
+
+
+

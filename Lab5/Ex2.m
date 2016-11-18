@@ -1,0 +1,10 @@
+n=-10:10;
+x=zeros(1,21);
+h=zeros(1,21);
+x (n>=0& n<=2)=1;
+h(n>=0& n<=2)=0.5;
+h(n>=4& n<=6)=1;
+v=conv(h,x);
+subplot(311); stem(n,x);
+subplot(312); stem(n,h);
+subplot(313); stem(v);

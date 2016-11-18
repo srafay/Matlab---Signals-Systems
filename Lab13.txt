@@ -1,0 +1,42 @@
+Q1
+SET SERVEROUTPUT ON
+ACCEPT p_n PROMPT 'Please enter no of employees: '
+DECLARE
+	p_n NUMBER(3);
+	v_emp_count NUMBER(3);
+	CURSOR emp_cursor IS
+		SELECT ename,sal from emp
+		order by sal DESC;
+	emp_record emp_cursor%ROWTYPE;
+BEGIN
+	v_emp_count:=&p_n;
+	OPEN emp_cursor;
+	FOR I IN 1..v_emp_count
+	LOOP
+		FETCH emp_cursor INTO emp_record;
+		EXIT WHEN emp_cursor%NOTFOUND;
+  		dbms_output.put_line('employee' || emp_record.ename || ', ' || emp_record.sal);
+	END LOOP;
+	close emp_cursor;
+END;
+/
+
+Q2
+SET SERVEROUTPUT ON
+DECLARE
+	v_emp_sal emp.sal%TYPE;
+	CURSOR emp_cursor IS
+		SELECT empno,ename,sal from emp;
+	emp_record emp_cursor%ROWTYPE;
+
+BEGIN
+	OPEN emp_cursor;
+	LOOP
+		FETCH emp_cursor INTO emp_record;
+		EXIT WHEN emp_cursor%NOTFOUND;
+		  emp_record.sal:= (emp_record.sal+0.45*emp_record.sal+0.12*emp_record.sal+0.15*emp_record.sal)-(0.20*emp_record.sal);
+		  dbms_output.put_line('Employee Number: ' || emp_record.empno || '  Employee Name: ' || emp_record.ename || '  Net salary: ' || emp_record.sal);
+	END LOOP;
+close emp_cursor;
+END;
+/

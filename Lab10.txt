@@ -1,0 +1,11 @@
+SET SERVEROUTPUT ON
+
+ACCEPT
+	p_monthly_sal PROMPT	'Please enter the monthly salary: ' 
+DECLARE
+	v_sal NUMBER(7):=&p_monthly_sal;
+BEGIN
+	v_sal:=(1.45*v_sal)-(0.11*v_sal);
+	DBMS_OUTPUT.PUT_LINE('The Net salary is :' || TO_CHAR(v_sal));
+END;
+/

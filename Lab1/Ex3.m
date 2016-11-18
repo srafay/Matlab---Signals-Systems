@@ -1,0 +1,17 @@
+x= 0:0.1:10;
+str1= ' $$\frac{\sin(x)}{x}$$';
+str2= '$$\frac{1}{(x-1)^2} +x $$';
+str3= '$$\frac{x^2+1}{x^2-4} $$';
+str4= '$$\frac{(10-x)^{1/3} -1}{(4-x^2)^{1/2}} $$';                      
+y= sin(x)./x;
+u=(1./(x-1).^2)+x;
+v= (x.*x+1)./(x.*x-4);
+z= (   ( (10-x).^(1/3))-1    ) ./ (4-x.*x).^(1/2);  
+subplot(2,2,1), plot(x,y);
+title(str1, 'Interpreter', 'latex');
+subplot(2,2,2), plot(x,u);
+title(str2, 'Interpreter', 'latex');
+subplot(2,2,3), plot(x,v);
+title(str3, 'Interpreter', 'latex');
+subplot(2,2,4), plot(x,z);
+title(str4, 'Interpreter', 'latex');
